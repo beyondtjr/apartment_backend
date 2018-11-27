@@ -18,3 +18,5 @@ RSpec.describe "Users", type: :request do
     end
   end
 end
+
+rails g resource Apartment street:string unit:string city:string postalcode:integer state:string country:string manager_name:string phone_number:string hours:string 
