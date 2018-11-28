@@ -1,15 +1,16 @@
 class ApartmentsController < ApplicationController
-  before_action :set_corgi, only: [:show, :update, :destroy]
+  # before_action :set_corgi, only: [:show, :update, :destroy]
   def index
     @apartments = Apartment.all
 
     render json: @apartments
   end
 
-#   # GET /corgis/1
-#   def show
-#     render json: @corgi
-#   end
+  # GET /corgis/1
+  def show
+    @apartment = Apartment.find(params[:id])
+    render json: @apartment
+  end
 #
 #   # POST /corgis
 #   def create
