@@ -13,15 +13,15 @@ class ApartmentsController < ApplicationController
   end
 #
 #   # POST /corgis
-#   def create
-#     @corgi = Corgi.new(corgi_params)
-#
-#     if @corgi.save
-#       render json: @corgi, status: :created, location: @corgi
-#     else
-#       render json: @corgi.errors, status: :unprocessable_entity
-#     end
-#   end
+  def create
+    @apartment = Apartment.new(params.require(:apartment).permit(:street,:unit,:manager_name, :hours, :phone_number, :city, :state, :country, :postalcode))
+
+    if @apartment.save
+      render json: @apartment, status: :created, location: @apartment
+    else
+      render json: @apartment.errors, status: :unprocessable_entity
+    end
+  end
 #
 #   # PATCH/PUT /corgis/1
 #   def update
