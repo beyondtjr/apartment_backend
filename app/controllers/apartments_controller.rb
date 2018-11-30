@@ -12,6 +12,13 @@ class ApartmentsController < ApplicationController
     render json: @apartment
   end
 #
+  def userapts
+    @user = User.find(params[:user_id])
+    @userapts = @user.apartments
+    render json: @userapts
+  end
+
+
 #   # POST /corgis
   def create
     @apartment = Apartment.new(params.require(:apartment).permit(:street,:unit,:manager_name, :hours, :phone_number, :city, :state, :country, :postalcode))
