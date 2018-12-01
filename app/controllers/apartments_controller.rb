@@ -18,10 +18,19 @@ class ApartmentsController < ApplicationController
     render json: @userapts
   end
 
+  def user_email
+    @user_email = User.find(params[:user_id]).email
+    render json: @user_email
+  end
+  def destroy
+    @apartment = Apartment.find(params[:id])
+    @apartment.destroy
+  end
+
 
 #   # POST /corgis
   def create
-    @apartment = Apartment.new(params.require(:apartment).permit(:street,:unit,:manager_name, :hours, :phone_number, :city, :state, :country, :postalcode))
+    @apartment = Apartment.new(params.require(:apartment).permit(:street,:unit,:manager_name, :hours, :phone_number, :city, :state, :country, :postalcode, :user_id))
 
     if @apartment.save
       render json: @apartment, status: :created, location: @apartment
